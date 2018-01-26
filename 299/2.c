@@ -92,33 +92,33 @@ int calculate_B(struct digit_count_node *list_secret, struct digit_count_node *l
 
 void init_list(struct digit_count_node *list)
 {
-	list->val = -1;
-	list->count = 0;
-	list->next = NULL;
+    list->val = -1;
+    list->count = 0;
+    list->next = NULL;
 }
 
 void free_list(struct digit_count_node *list)
 {
-	struct digit_count_node *p = list;
+    struct digit_count_node *p = list;
 
-	while(p != NULL)
-	{
-		list = list->next;
-		free(p);
-		p = list;
-	}
+    while(p != NULL)
+    {
+        list = list->next;
+        free(p);
+        p = list;
+    }
 }
 
 char* getHint(char* secret, char* guess) {
     struct digit_count_node *list_guess = malloc(sizeof(struct digit_count_node));
-	struct digit_count_node *list_secret = malloc(sizeof(struct digit_count_node));
+    struct digit_count_node *list_secret = malloc(sizeof(struct digit_count_node));
     int i, count_A=0, count_B=0, ans_size;
     char *ans;
 
     LOG("input [%s] [%s]\n", secret, guess);
 
-	init_list(list_secret);
-	init_list(list_guess);
+    init_list(list_secret);
+    init_list(list_guess);
 
     for (i = 0; i < strlen(secret); i++)
     {
@@ -146,8 +146,8 @@ char* getHint(char* secret, char* guess) {
     ans = malloc(sizeof(ans_size + 1));
     snprintf(ans, ans_size + 1, "%dA%dB", count_A, count_B);
 
-	free_list(list_secret);
-	free_list(list_guess);
+    free_list(list_secret);
+    free_list(list_guess);
 
     return ans;
 }
@@ -162,7 +162,7 @@ int main(void)
 
     ans = getHint("9988", "9800");
     printf("ANSWER 2 (9988, 9800): [%s]\n", ans);
-	free(ans);
+    free(ans);
 
     return 0;
 }

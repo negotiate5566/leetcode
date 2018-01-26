@@ -51,19 +51,19 @@ int findBottomLeftValue(struct TreeNode* root) {
 
 void free_tree(struct TreeNode *node)
 {
-	if (node->left == NULL && node->right == NULL)
-	{
-		free(node);
-		return;
-	}
+    if (node->left == NULL && node->right == NULL)
+    {
+        free(node);
+        return;
+    }
 
-	if (node->left != NULL)
-		free_tree(node->left);
+    if (node->left != NULL)
+        free_tree(node->left);
 
-	if (node->right != NULL)
-		free_tree(node->right);
+    if (node->right != NULL)
+        free_tree(node->right);
 
-	free(node);
+    free(node);
 }
 
 int main(void)
@@ -85,7 +85,7 @@ int main(void)
 
     answer = findBottomLeftValue(ex1);
     printf("example 1: %d\n", answer);
-	free_tree(ex1);
+    free_tree(ex1);
 
     //example 2
     struct TreeNode *ex2 = malloc(sizeof(struct TreeNode));
@@ -118,7 +118,7 @@ int main(void)
 
     answer = findBottomLeftValue(ex2);
     printf("example 2: %d\n", answer);
-	free_tree(ex2);
+    free_tree(ex2);
     
     return 0;
 }
